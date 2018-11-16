@@ -1,0 +1,83 @@
+<div class="container">
+
+<form action="" [formGroup]="formGroup">
+ <div > <span style="font-size:23px"><b>Queue Search</b>&nbsp;&nbsp;</span><button (click)="save()" class="btn">Save As</button> &nbsp;</div>
+ <div>&nbsp;</div>
+
+  <div class="row" >
+    <div class="col-md-6" >
+        <mat-form-field>
+            <mat-select placeholder="All Filters" formControlName="more" (selectionChange)="onSelectChange($event)">
+              <mat-option *ngFor="let c of filters"   [value]="c">
+                {{c.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+  </div>
+  <div>&nbsp;</div>
+
+    <div class="row" >
+  <ng-container formArrayName="items"  *ngFor="let item of formGroup.get('items').controls; let i = index;">
+    <div [formGroupName]="i" class="col-md-3">
+        <mat-form-field>
+      <mat-select placeholder="{{item.controls.placeholder.value}}" formControlName="select" multiple required *ngIf="item.controls.select">
+        <mat-option *ngFor="let c of item.controls.data.value" [value]="c.key">
+          {{c.value}}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" *ngIf="item.controls.autocomplete">
+          <input type="text" [placeholder]="item.controls.placeholder.value" aria-label="item.controls.placeholder.value" matInput [formControl]="searchCtrl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let c of formGroup.get('items').controls.data.value | async" [value]="c">
+                {{c.value}}
+            </mat-option>
+          </mat-autocomplete>
+       </mat-form-field>
+      </div>
+      <img src="./assets/images/delete.png" width="18" height="18" (click)="remove(i)" alt="" />
+   
+  </ng-container>
+  <div><button id="btnSearch"  *ngIf="show" (click)="search()" style="margin-left:10px" class="btn">Search</button> &nbsp;</div>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+
+   <table item-width="800px" mat-table [dataSource]="dataSource" class="mat">
+
+    <ng-container matColumnDef="Client">
+      <th mat-header-cell *matHeaderCellDef> Client </th>
+      <td mat-cell *matCellDef="let element"> {{element.Client}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AccountNumber">
+      <th mat-header-cell *matHeaderCellDef> AccountNumber </th>
+      <td mat-cell *matCellDef="let element"> {{element.AccountNumber}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ExceptionType">
+      <th mat-header-cell *matHeaderCellDef> ExceptionType </th>
+      <td mat-cell *matCellDef="let element"> {{element.ExceptionType}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="State">
+      <th mat-header-cell *matHeaderCellDef> State </th>
+      <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+    </ng-container>
+
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</form>
+
+
+</div>

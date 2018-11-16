@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.cdk-overlay-pane {
+    top:106 !important;
+}
+mat-select, .mat-form-field {
+    width:100% !important;
+}
+.mat-option{
+    height: 2em !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline
+{
+    display:none;
+
+}
+
+
+.mat-select-panel .mat-option
+{
+    height:2em;
+}
+
+body{
+    font-size: 15px !important;
+}
+
+.mat-form-field-infix {
+    border-top:0;
+}
+
+.mat-form-field-label{
+    margin-top:2px;
+    margin-left:2px;
+}
+
+mat-select {
+    BORDER-RIGHT: 1px;
+    BORDER-TOP: 1px;
+    BORDER-LEFT: 1px;
+    BORDER-BOTTOM: 1px;
+    border-style: solid;
+    text-transform: none;
+    font-size: 13px !important;
+    padding:2px;
+}
+
+mat-select .mat-select-trigger .mat-select-placeholder
+{
+    font-size: 13px !important;
+}
+
+#cdk-overlay-0
+{
+    margin-top:28px;
+    margin-left:13px;
+}

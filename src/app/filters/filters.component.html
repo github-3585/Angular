@@ -1,0 +1,35 @@
+
+<div class="k-block">
+  <button kendoButton>Default</button>
+</div>
+
+<div><mat-checkbox #showDetails [value]="" [checked]="isChecked" (change)="onChange($event)">Show details</mat-checkbox></div>
+
+<div><mat-radio-group value="2">
+  <mat-radio-button value="1">Option 1</mat-radio-button>
+  <mat-radio-button value="2">Option 2</mat-radio-button>
+</mat-radio-group></div>
+
+
+<div *ngIf="showDetails.checked">Here are the details</div>
+
+<div item-width="200px" >
+    <mat-select [(ngModel)]="filter">
+      <mat-option *ngFor="let filter of Filters" [value]="filter.id">{{filter.Type}}</mat-option>
+    </mat-select>
+<div>
+
+<div>
+ <mat-form-field>
+   <input ngModel name="username"  matInput placeholder="User Name" type="text" required />
+   <mat-hint>type Usernane</mat-hint>
+   <span matSuffix>@domain.com</span>
+   <mat-error>
+     The Username is mandatory
+   </mat-error>
+ </mat-form-field>
+</div>
+
+
+
+

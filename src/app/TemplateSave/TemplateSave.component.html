@@ -1,0 +1,7 @@
+<p>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Enter Template Name" [(ngModel)]="templatename">
+      <mat-hint>Teamplate Name</mat-hint>
+    </mat-form-field>
+  </p>
+<button matInput (click)="saveTemplateName()" [mat-dialog-close]="yesClose">Save</button>

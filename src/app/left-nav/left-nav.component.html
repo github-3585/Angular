@@ -1,0 +1,10 @@
+<div class="row" style="height:800px" >
+  <div class="col-md-12" [ngClass]="{'toggle-expand': isToggle, 'toggle-collapse': !isToggle}">
+    <button class="btn btn-default toggle-btn" (click)="slideToggle()"> {{isToggle ? '>' : '<'}}</button>
+  <!-- <b><u>  <p style="margin-top:180px;margin-left:100px"  *ngIf="savedfilters.userFilterName">Saved Filters </p></u> </b> <a  style="margin-top:5px;margin-left:100px" mat-button *ngIf="savedfilters.userFilterName">{{savedfilters.userFilterName}}</a> -->
+  <ng-container *ngFor="let link of savedfilters">
+    <a (click)="selectUserFilter(link)">{{link.userFilterName}}</a> <br/>
+  </ng-container>
+ 
+  </div>
+</div>
